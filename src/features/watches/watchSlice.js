@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { list } from "postcss";
+
 
 const watchSlice  = createSlice({
     name : "users",
     initialState: {
-        list : []
+        list : [],
+        isLoggedIn: JSON.parse(localStorage.getItem("isLoggedIn")) || false,
     },
     reducers: {
         addUser: (state , action) => {
@@ -15,3 +16,4 @@ const watchSlice  = createSlice({
         }
     }
 })
+export default watchSlice.reducer
