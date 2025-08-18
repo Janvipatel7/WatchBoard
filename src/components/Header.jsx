@@ -1,9 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom"
+import { tologout } from "../features/watches/watchSlice";
 
 const Header = () => {
 
-    
+  
     const {pathname} = useLocation();
     const isLoggedIn = useSelector((state) => (state.users.isLoggedIn))
     console.log(isLoggedIn);
@@ -11,7 +12,9 @@ const Header = () => {
     const dispatch = useDispatch()
 
     const handleClick = () => {
-        
+        dispatch(tologout())
+        navigate("/login");
+        toast.success("Admin Logged Out Successfully !")
     }
 
 
