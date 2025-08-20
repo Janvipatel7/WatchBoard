@@ -1,11 +1,17 @@
-import { Navigate } from "react-router-dom"
+import { useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 
-const LoginRoute = ({ isLoggedin , children}) => {
-  if(isLoggedin){
-    return <Navigate to={"/watch"} />;
-  }
-  
-  return children
-}
+const LoginRoute = ({ Component }) => {
+  const navigate = useNavigate();
 
-export default LoginRoute
+  useEffect(() => {
+    let loginStatus = JSON.parse(localStorage.getItem("isLoggedIn")) || false;
+    if (!loginStatus) {
+      navigate("/login"); 
+    }
+  }, [navigate]);
+
+  return <Component />
+};
+
+export default LoginRoute;

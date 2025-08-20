@@ -9,7 +9,7 @@ const Watch = () => {
     const navigate = useNavigate()
     return (
         <>
-            <section className="pt-[100px] bg-[#26272c] h-screen">
+            <section className="pt-[100px] bg-[#16181e] h-screen">
                 <div className="container mx-auto">
                     <div className="flex items-center justify-between">
                         <h2 className="text-white font-medium text-[20px]">Watch Details</h2>

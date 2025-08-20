@@ -44,7 +44,7 @@ const WatchTable = ({watches}) => {
                                         {watch.color}
                                     </td>
                                     <td className="px-6 py-4">
-                                        {watch.price}
+                                        ${Number(watch.price).toLocaleString()}
                                     </td>
                                     <td className="px-6 py-4">
                                         <div className="flex items-center gap-4">
