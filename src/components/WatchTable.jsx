@@ -1,5 +1,12 @@
+import { useDispatch } from "react-redux"
+import { deleteWatch } from "../features/watches/watchSlice"
+import { Link } from "react-router-dom"
 
-const WatchTable = () => {
+const WatchTable = ({watches}) => {
+    const dispatch = useDispatch()
+    const handleDelete = (id) => {
+        dispatch(deleteWatch(id))
+    }
     return (
         <div>
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -24,26 +31,31 @@ const WatchTable = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {/* <tr className="odd:bg-white even:bg-gray-50 border-b border-gray-200">
-                            <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                               
-                            </th>
-                            <td className="px-6 py-4">
-                               
-                            </td>
-                            <td className="px-6 py-4">
-                               
-                            </td>
-                            <td className="px-6 py-4">
-                              
-                            </td>
-                            <td className="px-6 py-4">
-                                <div className="flex items-center gap-4">
-                                    <button  className="font-medium text-green-600 hover:underline">Edit</button>
-                                    <button  className="font-medium text-red-600 hover:underline">Delete</button>
-                                </div>
-                            </td>
-                        </tr> */}
+                        {
+                            watches.map((watch) => {
+                                return <tr key={watch.id} className="odd:bg-white even:bg-gray-50 border-b border-gray-200">
+                                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                        {watch.name}
+                                    </th>
+                                    <td className="px-6 py-4">
+                                        {watch.model}
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        {watch.color}
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        {watch.price}
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        <div className="flex items-center gap-4">
+                                            <Link to={`/edit-watch/${watch.id}`} className="font-medium text-green-600 hover:underline">Edit</Link>
+                                            <button onClick={() => handleDelete(watch.id)}
+                                                className="font-medium text-red-600 hover:underline">Delete</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            })
+                        }
                     </tbody>
                 </table>
             </div>

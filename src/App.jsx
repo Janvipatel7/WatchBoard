@@ -7,6 +7,8 @@ import Services from "./pages/Services"
 import Login from "./pages/Login"
 import Watch from "./pages/Watch"
 import { ToastContainer } from "react-toastify"
+import AddWatch from "./pages/AddWatch"
+import EditDetails from "./pages/EditDetails"
 
 
 const App = () => {
@@ -20,6 +22,8 @@ const App = () => {
                 <Route path="/services" element={<Services/>} />
                 <Route path="/watch" element={<Watch/>} />
                 <Route path="/login" element={<Login/>} />
+                <Route path="/add-watch" element={<AddWatch/>} />
+                <Route path="/edit-watch/:id" element={<EditDetails/>} />
             </Routes>
             <ToastContainer/>
         </BrowserRouter>

@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { tologin } from "../features/watches/watchSlice"
@@ -11,16 +11,21 @@ const Login = () => {
     const dispatch = useDispatch()
     const isLoggedIn = useSelector((state) => state.users.isLoggedIn)
     const navigate = useNavigate()
+
     const handleChange = (e) => {
         setInput({...input , [e.target.id]: e.target.value})
     }
 
+    useEffect(() => {
+        if(isLoggedIn){
+            navigate("/watch")
+        }
+    } , [isLoggedIn])
+    
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(tologin(input))
-        navigate("/watch")
-    }
-
+    } 
     return (
         <>
             <section className="bg-[#0f1014]  min-h-screen flex items-center justify-center px-4 py-12">
@@ -36,7 +41,7 @@ const Login = () => {
                                     Your email
                                 </label>
                                 <input onChange={handleChange} value={input.email}
-                                    type="email" name="email" id="email" placeholder="name@company.com" required
+                                    type="email" name="email" id="email" placeholder="admin@gmail.com" required
                                     className="w-full px-4 py-3 text-sm border border-[#795b50] rounded-xl focus:ring-1 focus:ring-[#795b50] focus:outline-none"
                                 />
                             </div>
@@ -45,7 +50,7 @@ const Login = () => {
                                     Password
                                 </label>
                                 <input onChange={handleChange} value={input.password}
-                                    type="password" name="password" id="password" placeholder="••••••••" required
+                                    type="password" name="password" id="password" placeholder="admin@123" required
                                     className="w-full px-4 py-3 text-sm border border-[#795b50] rounded-xl focus:ring-1 focus:ring-[#795b50] focus:outline-none"
                                 />
                             </div>
