@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import { editdetails } from "../features/watches/watchSlice"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate, useParams } from "react-router-dom"
-import Watch from "./Watch"
 
 const EditDetails = () => {
 

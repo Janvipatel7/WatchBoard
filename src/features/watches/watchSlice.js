@@ -30,6 +30,13 @@ const watchSlice  = createSlice({
             state.watchlist.push({ id: nanoid(),...action.payload })
             localStorage.setItem("list" , JSON.stringify(state.watchlist))
         },
+        addWatchCard : (state , action) => {
+            if(action.payload == undefined){
+                return
+            }
+            state.watchlist.push({ id: nanoid(),...action.payload })
+            localStorage.setItem("list" , JSON.stringify(state.watchlist))
+        },
         deleteWatch: (state , action) => {
             const deletedItem = state.watchlist.filter((watch) => {
                 return watch.id != action.payload
@@ -52,5 +59,5 @@ const watchSlice  = createSlice({
     }
 })
 
-export const { tologin , tologout,addwatch , deleteWatch ,editdetails} = watchSlice.actions
+export const { tologin , tologout,addwatch , addWatchCard , deleteWatch ,editdetails} = watchSlice.actions
 export default watchSlice.reducer

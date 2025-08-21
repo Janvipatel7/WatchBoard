@@ -1,12 +1,25 @@
-import { Navigate, useNavigate } from "react-router-dom"
+import { Navigate, useNavigate, useParams } from "react-router-dom"
 import WatchTable from "../components/WatchTable"
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import cards from "../components/cards";
+import { addWatchCard } from "../features/watches/watchSlice";
 
 const Watch = () => {
     const watches = useSelector((state) => {
          return state.users.watchlist
     })
     const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const { id } = useParams()
+
+    useEffect(() => {
+        let cardData = cards.find((item , idx) => {
+            return idx == id
+        })
+            dispatch(addWatchCard(cardData))
+            navigate("/watch")
+    }, [])
     return (
         <>
             <section className="pt-[100px] bg-[#16181e] h-screen">

@@ -1,9 +1,7 @@
-import { FaTools, FaCogs, FaWrench } from "react-icons/fa";
 const About = () => {
   return (
     <section className="bg-[#0f1014]  text-white py-16">
       <div className="max-w-6xl mx-auto px-6">
-
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4">About WatchBoard</h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
