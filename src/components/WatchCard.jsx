@@ -4,7 +4,7 @@ const WatchCard = ({ id, img, name, model, color, price }) => {
   const navigate = useNavigate()
 
   return (
-    <div className="w-full sm:w-1/2 lg:w-1/3 p-4">
+    <div className="w-full h-full sm:w-1/2 lg:w-1/3 p-4">
       <div className="bg-[#0f1014] text-white rounded-xl shadow-lg overflow-hidden group relative border border-gray-700">
         <div className="relative flex justify-center p-6">
           <img  src={img}  alt={model} 
